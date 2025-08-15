@@ -21,6 +21,7 @@ if EMBODIMENT_ONLY_ENV:
     from .api import auth
     from .api import embodiment
     from .api import orchestrators
+    from .api import livepeer
     from .api import dashboard_clean as dashboard
     # Set None for unused modules in embodiment-only mode
     agents = teams = tasks = gpu = management = master = audit = ollama = security = cluster = vtuber = None
@@ -30,6 +31,7 @@ else:
     from .api import auth, agents, teams, tasks, gpu, management, master, audit, ollama, security, cluster, vtuber
     from .api import embodiment
     from .api import orchestrators
+    from .api import livepeer
     from .api import dashboard_clean as dashboard
     from .core.orchestration.orchestrator import orchestrator
     from .core.orchestration.gpu_orchestrator import gpu_orchestrator
@@ -252,6 +254,7 @@ else:
     app.include_router(vtuber.router)  # VTuber control API
     app.include_router(embodiment.router)  # Embodied agent orchestration API
     app.include_router(orchestrators.router)  # Orchestrator management API
+    app.include_router(livepeer.router)  # Livepeer connectivity pipeline API
     app.include_router(dashboard.router)  # Built-in Dashboard
 
 # Health check
